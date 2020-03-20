@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Department extends Model {
+class TaskType extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -15,4 +15,4 @@ class Department extends Model {
   }
 }
 
-export default Department;
+export default TaskType;

@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('task', {
+    return queryInterface.createTable('tasks', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -25,16 +25,16 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: false
       },
-      type_id: {
+      task_type_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'tasktype', key: 'id' },
+        references: { model: 'task_types', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false
       },
-      status_id: {
+      task_status_id: {
         type: Sequelize.INTEGER,
-        references: { model: 'taskstatus', key: 'id' },
+        references: { model: 'task_status', key: 'id' },
         onUpdate: 'CASCADE',
         onDelete: 'SET NULL',
         allowNull: false
@@ -59,6 +59,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('task');
+    return queryInterface.dropTable('tasks');
   }
 };

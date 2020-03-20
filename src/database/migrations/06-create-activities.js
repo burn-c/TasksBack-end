@@ -22,6 +22,13 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: false
       },
+      task_id: {
+        type: Sequelize.INTEGER,
+        references: { model: 'tasks', key: 'id' },
+        onUpdate: 'CASCADE',
+        onDelete: 'SET NULL',
+        allowNull: false
+      },
       start_date: {
         type: Sequelize.DATE,
         allowNull: false
