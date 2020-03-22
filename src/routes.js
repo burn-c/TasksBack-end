@@ -16,13 +16,18 @@ routes.post('/sessions', SessionController.store);
 routes.use(authMiddleware);
 routes.post('/users', UserController.store);
 routes.put('/users', UserController.update);
+routes.get('/users', UserController.index);
 
 routes.post('/task', TaskController.store);
+routes.get('/task', TaskController.index);
 
 routes.post('/department', DepartmentController.store);
+routes.get('/department', DepartmentController.index);
 
 routes.post('/task/type', TaskTypeController.store);
+routes.get('/task/type', TaskTypeController.index);
 
 routes.post('/task/status', TaskStatuController.store);
+routes.get('/task/status', TaskStatuController.index);
 
 export default routes;

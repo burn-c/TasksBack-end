@@ -72,6 +72,15 @@ class UserController {
       admin
     });
   }
+
+  async index(req, res) {
+    // List all data
+    const users = await User.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json(users);
+  }
 }
 
 export default new UserController();

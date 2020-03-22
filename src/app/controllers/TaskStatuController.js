@@ -33,11 +33,16 @@ class TaskStatuController {
     });
   }
 
-  async update(req, res) {
-    return res.json({});
+  async index(req, res) {
+    // List all data
+    const taskStatus = await TaskStatu.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json(taskStatus);
   }
 
-  async index(req, res) {
+  async update(req, res) {
     return res.json({});
   }
 

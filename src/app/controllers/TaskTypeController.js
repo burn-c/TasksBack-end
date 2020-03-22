@@ -33,11 +33,16 @@ class TaskTypeController {
     });
   }
 
-  async update(req, res) {
-    return res.json({});
+  async index(req, res) {
+    // List all data
+    const taskTypes = await TaskType.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json(taskTypes);
   }
 
-  async index(req, res) {
+  async update(req, res) {
     return res.json({});
   }
 

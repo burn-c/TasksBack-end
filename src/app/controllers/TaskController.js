@@ -22,11 +22,23 @@ class TaskController {
     return res.json(newTask);
   }
 
-  async update(req, res) {
-    return res.json({});
+  async index(req, res) {
+    // List all data
+    const tasks = await Task.findAll({
+      attributes: [
+        'id',
+        'description',
+        'start_date',
+        'end_date',
+        'task_type_id',
+        'task_status_id'
+      ]
+    });
+
+    return res.json(tasks);
   }
 
-  async index(req, res) {
+  async update(req, res) {
     return res.json({});
   }
 

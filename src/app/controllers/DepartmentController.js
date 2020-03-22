@@ -33,11 +33,16 @@ class DepartmentController {
     });
   }
 
-  async update(req, res) {
-    return res.json({});
+  async index(req, res) {
+    // List all data
+    const departments = await Department.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json(departments);
   }
 
-  async index(req, res) {
+  async update(req, res) {
     return res.json({});
   }
 
