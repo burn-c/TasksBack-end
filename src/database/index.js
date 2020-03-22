@@ -5,10 +5,11 @@ import Department from '../app/models/Department';
 import TaskType from '../app/models/TaskType';
 import TaskStatu from '../app/models/TaskStatu';
 import Task from '../app/models/Task';
+import Activity from '../app/models/Activity';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Department, TaskType, TaskStatu, Task];
+const models = [User, Department, TaskType, TaskStatu, Task, Activity];
 
 class Database {
   constructor() {

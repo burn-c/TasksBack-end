@@ -29,14 +29,6 @@ module.exports = {
         onDelete: 'SET NULL',
         allowNull: false
       },
-      start_date: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
-      end_date: {
-        type: Sequelize.DATE,
-        allowNull: false
-      },
       created_at: {
         type: Sequelize.DATE,
         allowNull: false

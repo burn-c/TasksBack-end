@@ -6,6 +6,7 @@ import DepartmentController from './app/controllers/DepartmentController';
 import TaskTypeController from './app/controllers/TaskTypeController';
 import TaskStatuController from './app/controllers/TaskStatuController';
 import TaskController from './app/controllers/TaskController';
+import ActivityController from './app/controllers/ActivityController';
 
 import authMiddleware from './app/middlewares/auth';
 
@@ -29,5 +30,7 @@ routes.get('/task/type', TaskTypeController.index);
 
 routes.post('/task/status', TaskStatuController.store);
 routes.get('/task/status', TaskStatuController.index);
+
+routes.post('/task/activity', ActivityController.store);
 
 export default routes;
