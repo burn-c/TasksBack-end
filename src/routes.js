@@ -32,5 +32,6 @@ routes.post('/task/status', TaskStatuController.store);
 routes.get('/task/status', TaskStatuController.index);
 
 routes.post('/task/activity', ActivityController.store);
+routes.get('/task/activity/:task_id', ActivityController.index);
 
 export default routes;

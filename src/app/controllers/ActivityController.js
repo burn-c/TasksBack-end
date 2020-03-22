@@ -33,6 +33,26 @@ class ActivityController {
 
     return res.json(activity);
   }
+
+  async index(req, res) {
+    const { task_id } = req.params;
+
+    // Checks the task exists
+    const taskExists = await Task.findOne({
+      where: { id: task_id }
+    });
+
+    if (!taskExists) {
+      return res.status(400).json({ error: 'Task does not exist' });
+    }
+
+    const activities = await Activity.findAll({
+      where: { task_id },
+      attributes: ['id', 'title', 'description', 'created_at']
+    });
+
+    return res.json(activities);
+  }
 }
 
 export default new ActivityController();
