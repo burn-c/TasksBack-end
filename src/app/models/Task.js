@@ -17,21 +17,23 @@ class Task extends Model {
   }
 
   static associate(models) {
-    this.belongsTo(models.Users, {
+    this.belongsTo(models.User, {
       foreignKey: 'user_id',
       as: 'user'
     });
-    this.belongsTo(models.Departaments, {
+    this.belongsTo(models.Department, {
       foreignKey: 'department_id',
       as: 'department'
     });
-    this.belongsTo(models.TaskTypes, {
+
+    this.belongsTo(models.TaskType, {
       foreignKey: 'task_type_id',
       as: 'task_type'
     });
-    this.belongsTo(models.TaskStatus, {
+
+    this.belongsTo(models.TaskStatu, {
       foreignKey: 'task_status_id',
-      as: 'task_statu'
+      as: 'task_status'
     });
   }
 }
