@@ -1,5 +1,9 @@
 import * as Yup from 'yup';
 import Task from '../models/Task';
+import User from '../models/User';
+import Department from '../models/Department';
+import TaskStatu from '../models/TaskStatu';
+import TaskType from '../models/TaskType';
 
 class TaskController {
   async store(req, res) {
@@ -31,10 +35,34 @@ class TaskController {
         attributes: [
           'id',
           'description',
+          'user_id',
           'start_date',
           'end_date',
           'task_type_id',
           'task_status_id'
+        ],
+        include: [
+          {
+            model: User,
+            as: 'user',
+            attributes: ['name']
+          },
+          {
+            model: Department,
+            as: 'department',
+            attributes: ['name']
+          },
+          {
+            model: TaskStatu,
+            as: 'task_status',
+            attributes: ['name']
+          },
+
+          {
+            model: TaskType,
+            as: 'task_type',
+            attributes: ['name']
+          }
         ]
       });
 
