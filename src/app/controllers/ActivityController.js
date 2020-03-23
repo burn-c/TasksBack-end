@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import Activity from '../models/Activity';
 import Task from '../models/Task';
+import User from '../models/User';
 
 class ActivityController {
   async store(req, res) {
@@ -48,7 +49,21 @@ class ActivityController {
 
     const activities = await Activity.findAll({
       where: { task_id },
-      attributes: ['id', 'title', 'description', 'created_at']
+      attributes: [
+        'id',
+        'user_id',
+        'title',
+        'description',
+        'created_at',
+        'updated_at'
+      ],
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['name']
+        }
+      ]
     });
 
     return res.json(activities);
