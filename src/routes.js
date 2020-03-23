@@ -20,7 +20,7 @@ routes.put('/users', UserController.update);
 routes.get('/users', UserController.index);
 
 routes.post('/task', TaskController.store);
-routes.get('/task', TaskController.index);
+routes.get('/task/:id', TaskController.index);
 
 routes.post('/department', DepartmentController.store);
 routes.get('/department', DepartmentController.index);

@@ -23,6 +23,15 @@ class TaskController {
   }
 
   async index(req, res) {
+    const { id } = req.params;
+
+    // Return task for id
+    if (id) {
+      const tasks = await Task.findByPk(id);
+
+      return res.json(tasks);
+    }
+
     // List all data
     const tasks = await Task.findAll({
       attributes: [
