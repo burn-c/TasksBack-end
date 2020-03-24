@@ -1,0 +1,54 @@
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _yup = require('yup'); var Yup = _interopRequireWildcard(_yup);
+var _TaskStatu = require('../models/TaskStatu'); var _TaskStatu2 = _interopRequireDefault(_TaskStatu);
+
+class TaskStatuController {
+  async store(req, res) {
+    const schema = Yup.object().shape({
+      name: Yup.string()
+        .min(6)
+        .required()
+    });
+
+    // Validation of schema
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Validations fails' });
+    }
+
+    const { name } = req.body;
+
+    // Validation if the task status is already registered
+    const taskStatusExist = await _TaskStatu2.default.findOne({
+      where: { name }
+    });
+
+    if (taskStatusExist) {
+      return res.status(400).json({ error: 'Registered task status' });
+    }
+
+    const { id } = await _TaskStatu2.default.create(req.body);
+
+    return res.json({
+      id,
+      name
+    });
+  }
+
+  async index(req, res) {
+    // List all data
+    const taskStatus = await _TaskStatu2.default.findAll({
+      attributes: ['id', 'name']
+    });
+
+    return res.json(taskStatus);
+  }
+
+  async update(req, res) {
+    return res.json({});
+  }
+
+  async delete(req, res) {
+    return res.json({});
+  }
+}
+
+exports. default = new TaskStatuController();
