@@ -5,7 +5,7 @@ class TaskStatuController {
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string()
-        .min(6)
+        .min(2)
         .required()
     });
 
